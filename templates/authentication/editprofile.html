@@ -1,0 +1,71 @@
+{% extends 'authentication/layout.html' %}
+{% load static from staticfiles %}
+{% block headblock %}
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <style>
+        body{
+            background-image: url("{% static 'edit.jpg' %}");
+            background-size: 100%;
+        }
+        .button3,input[type="file"]{
+            background-color: #919191;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button3:hover{
+            background-color: #3474ff;
+        }
+        table{
+            width:40%;
+
+        }
+        td,tr{
+            width: 30%;
+        }
+        .div1{
+            margin-top: 15px;
+            background-color: white;
+            width:40%;
+            height: 500px;
+            overflow: auto;
+            margin-left: 400px;
+            border-radius: 30px;
+            font-size: 17px;
+            box-shadow:  inset 0 0 10px #000000;
+            color: #063e68;
+            text-shadow: 0 0 2px #e7e9ff;
+        }
+    form{
+        margin-left:20px ;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="div1">
+    <br>
+        <form method="POST" action="{% url 'editprofile' %}">
+            {% csrf_token %}
+            <fieldset>
+                {{ uform }}
+                <br>{{ pform }}
+            </fieldset>
+            <center><br><br>
+            <input type="submit" class="button3" value="update">
+
+        </center>
+        </form>
+{#        <center><br><br>#}
+{#        <input type="submit" class="button3" value="update">#}
+{##}
+{#        </center>#}
+    </div>
+{% endblock %}
